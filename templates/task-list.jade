@@ -6,7 +6,5 @@ block content
 			li.card.task
 				a(href="/tasks/#{task.Id}")
 					span.id= task.UserStory.Id
-					img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=http")
+					img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=http://bb.6fstudios.com/tasks/#{task.Id}")
 					span.title= task.Name
-					
-					//- img.pull-left(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=http://bb.6fstudios.com/sprints/#{story.Iteration.Id}/stories/#{story.Id}/tasks/#{task.Id}")
