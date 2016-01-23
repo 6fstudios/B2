@@ -16,9 +16,9 @@ gulp.task('start', function() {
 });
 
 gulp.task('sass', function() {
-    gulp.src('./*.scss')
+    gulp.src('./**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./public'));
 });
 
 gulp.task('watch', function() {

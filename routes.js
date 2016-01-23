@@ -6,7 +6,7 @@ module.exports = [{
     method: 'GET',
     path: '/style.css',
     handler: function(request, reply) {
-        reply.file('./css/style.css');
+        reply.file('./public/style.css');
     }
 }, {
     method: 'GET',
