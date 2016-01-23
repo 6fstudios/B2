@@ -29,7 +29,7 @@ module.exports = [{
 }, {
     method: 'GET',
     path: '/sprints/{sprintId}/stories/{id}',
-    handler: stories.getStory
+    handler: stories.getStoryTasks
 }, {
     method: 'GET',
     path: '/tasks/{taskId}',
@@ -40,6 +40,6 @@ module.exports = [{
     handler: sprints.getSprintTasks
 }, {
     method: 'POST',
-    path: '/sprints/{sprintId}/stories/{storyId}/tasks/{taskId}',
+    path: '/tasks/{taskId}',
     handler: tasks.updateTask
 }]
