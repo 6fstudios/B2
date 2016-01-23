@@ -1,16 +1,14 @@
-// var config = require('./config');
 var Hapi = require('hapi');
 var Path = require('path');
 var Hoek = require('hoek');
-var intert = require('inert');
 
 var routes = require('./routes');
 
 var server = new Hapi.Server();
 
 server.connection({
-    host: 'localhost',
-    port: 8000
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 8081
 });
 
 server.register(require('vision'), (err) => {

@@ -1,6 +1,6 @@
 var hapi = require('hapi');
 var rp = require('request-promise');
-var config = require('config');
+var config = require('../config');
 var tasks = {};
 
 tasks.view = function(request, reply) {
