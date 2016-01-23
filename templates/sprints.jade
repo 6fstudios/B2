@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	ul
+		each sprint in sprints
+			li
+				a(href="/sprints/#{sprint.Id}/stories" class="#{sprint.IsCurrent ? 'active' : ''}")= sprint.Name

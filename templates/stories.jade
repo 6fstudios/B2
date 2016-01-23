@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	ul.list-inline.tasks
+		each story in stories
+			each task in story.Tasks.Items
+				li.col-md-4.col-xs-12.task
+					a(href="/sprints/#{story.Iteration.Id}/stories/#{story.Id}/tasks/#{task.Id}")
+						p
+							strong= story.Id
+						img.pull-left(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=http://bb.6fstudios.com/sprints/#{story.Iteration.Id}/stories/#{story.Id}/tasks/#{task.Id}")
+						span.title= task.Name

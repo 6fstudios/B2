@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	strong= story.Name
+	span= story.Id
+
+	ul.tasks
+		each task in story.Tasks.Items
+			li(class= task.EntityState.Name.split(' ').join('').toLowerCase())
+				span= task.Name
+				span= story.Id
+				img(src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + task.Id)
+
+	script(type="text/javascript").
