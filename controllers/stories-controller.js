@@ -41,7 +41,6 @@ stories.get = function(request, reply) {
     };
     return rp(options)
         .then(function(data) {
-            console.log(data)
             reply.view('stories', {
                 stories: data.Items
             });

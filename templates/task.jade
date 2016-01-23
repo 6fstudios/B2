@@ -2,14 +2,10 @@ extends layout
 
 block content
 	.set-task-state
-		h3= task.Name
+		h3
+			span (#{task.Iteration.Id}) 
+			span= task.Name
 		form( method='post')
 			button(value="50" name="state" class="#{task.EntityState.Name == 'To Do' ? 'active' : ''}") To Do
 			button(value="51" name="state" class="#{task.EntityState.Name == 'Doing' ? 'active' : ''}") Doing
 			button(value="52" name="state" class="#{task.EntityState.Name == 'Done' ? 'active' : ''}") Done
-
-	//- script(type="text/javascript").
-	//- 	$('button').click(function(e){
-	//- 		var state = $(this).data('state');
-	//- 		$.post('/api/tasks/#{task.Id}', {state: state});
-	//- 	})

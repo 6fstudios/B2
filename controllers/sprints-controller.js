@@ -25,6 +25,32 @@ sprints.get = function(request, reply) {
         });
 }
 
+sprints.getSprintTasks = function(request, reply) {
+    var options = {
+        uri: config.apiUrl + '/tasks',
+        qs: {
+            format: 'json',
+            where: '(Iteration.id eq ' + request.params.sprintId + ')',
+            orderByDesc: 'UserStory.Id',
+            take: 500,
+            include: ['Name', 'Owner', 'Iteration', 'UserStory']
+        },
+        headers: {
+            'Authorization': config.token
+        },
+        json: true // Automatically parses the JSON string in the response 
+    };
+    return rp(options)
+        .then(function(data) {
+            reply.view('task-list', {
+                tasks: data.Items
+            });
+        })
+        .catch(function(err) {
+            console.error(err);
+        });
+}
+
 sprints.getCurrent = function(request, reply) {
     var options = {
         uri: config.apiUrl + '/iterations',
@@ -40,7 +66,8 @@ sprints.getCurrent = function(request, reply) {
     };
     return rp(options)
         .then(function(data) {
-            reply.redirect('/sprints/' + data.Items[0].Id + '/stories');
+            console.log(data.Items[0].Id)
+            reply.redirect('/sprints/' + data.Items[0].Id + '/tasks');
         })
         .catch(function(err) {
             console.error(err);

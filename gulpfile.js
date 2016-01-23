@@ -16,7 +16,7 @@ gulp.task('start', function() {
 });
 
 gulp.task('sass', function() {
-    gulp.src('./**/*.scss')
+    gulp.src('./sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./public'));
 });
