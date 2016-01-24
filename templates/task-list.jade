@@ -1,10 +1,35 @@
 extends layout
 
+append head
+	link(rel="stylesheet" type='text/css' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+
 block content
+	.task-list-actions
+		.btn 
+			label
+				input.select-all(type="checkbox")
+				| select all
+		button.btn.print-selected
+			i.fa.fa-print
 	ul.tasks
 		each task in tasks
-			li.card.task
-				a(href="/tasks/#{task.Id}")
-					span.id= task.UserStory.Id
-					img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=http://bb.6fstudios.com/tasks/#{task.Id}")
-					span.title= task.Name
+			include partials/task.jade
+append scripts
+	script.
+		var data = !{JSON.stringify(tasks)};
+		$('input.select').change(function() {
+			var checked = $(this).prop('checked');
+			$(this).parents('.card').toggleClass('printy', checked);
+		})
+
+		$('input.select-all').change(function() {
+			var checked = $(this).prop('checked');
+			$('.select').each(function(){
+				$(this).prop('checked', checked).trigger("change");
+			})
+		})
+
+		$('.print-selected').click(function() {
+			window.print();
+		})
+		

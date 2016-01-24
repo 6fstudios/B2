@@ -11,21 +11,15 @@ module.exports = [{
 }, {
     method: 'GET',
     path: '/',
-    handler: sprints.getCurrent
+    handler: sprints.getCurrentSprintTasks
 }, {
     method: 'GET',
     path: '/sprints',
     handler: sprints.get
 }, {
     method: 'GET',
-    path: '/sprints/{id}',
-    handler: function(request, reply) {
-        reply.redirect('/sprints/' + request.params.id + '/stories');
-    }
-}, {
-    method: 'GET',
-    path: '/sprints/{sprintId}/stories',
-    handler: stories.get
+    path: '/sprints/{sprintId}',
+    handler: sprints.getSprintTasks
 }, {
     method: 'GET',
     path: '/sprints/{sprintId}/stories/{id}',
@@ -34,10 +28,6 @@ module.exports = [{
     method: 'GET',
     path: '/tasks/{taskId}',
     handler: tasks.view
-}, {
-    method: 'GET',
-    path: '/sprints/{sprintId}/tasks',
-    handler: sprints.getSprintTasks
 }, {
     method: 'POST',
     path: '/tasks/{taskId}',

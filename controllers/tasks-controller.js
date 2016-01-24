@@ -16,19 +16,13 @@ tasks.view = function(request, reply) {
     };
     return rp(options)
         .then(function(data) {
-            reply.view('task', {
+            reply.view('edit-task', {
                 task: data
             });
         })
         .catch(function(err) {
             console.error(err);
         });
-}
-
-tasks.getTask = function(request, reply) {
-    reply({
-        success: true
-    });
 }
 
 tasks.updateTask = function(request, reply) {
@@ -48,7 +42,7 @@ tasks.updateTask = function(request, reply) {
     };
     return rp(options)
         .then(function(data) {
-            reply.view('task', {
+            reply.view('edit-task', {
                 task: data
             });
         })

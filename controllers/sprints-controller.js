@@ -33,7 +33,7 @@ sprints.getSprintTasks = function(request, reply) {
             where: '(Iteration.id eq ' + request.params.sprintId + ')',
             orderByDesc: 'UserStory.Id',
             take: 500,
-            include: ['Name', 'Owner', 'Iteration', 'UserStory']
+            include: '[Name, Owner, Iteration, Iteration[StartDate], CreateDate, UserStory]'
         },
         headers: {
             'Authorization': config.token
@@ -51,7 +51,7 @@ sprints.getSprintTasks = function(request, reply) {
         });
 }
 
-sprints.getCurrent = function(request, reply) {
+sprints.getCurrentSprintTasks = function(request, reply) {
     var options = {
         uri: config.apiUrl + '/iterations',
         qs: {
@@ -67,7 +67,7 @@ sprints.getCurrent = function(request, reply) {
     return rp(options)
         .then(function(data) {
             console.log(data.Items[0].Id)
-            reply.redirect('/sprints/' + data.Items[0].Id + '/tasks');
+            reply.redirect('/sprints/' + data.Items[0].Id);
         })
         .catch(function(err) {
             console.error(err);

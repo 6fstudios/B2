@@ -1,0 +1,40 @@
+@media print {
+    @page {
+        size: portrait;
+        margin: 0.25cm;
+    }
+    .task-list-actions {
+        display: none;
+    }
+    .tasks {
+        padding: 0;
+        .card {
+            page-break-inside: avoid;
+            display: none;
+            &.printy {
+                display: block;
+            }
+            width: 48%;
+            height: 250px;
+            box-shadow: none;
+            font-size: 1.25em;
+            margin: 4.5% 1%;
+            img {
+                width: 75px;
+                float: none;
+            }
+            .title {
+                width: 100%;
+                float: none;
+            }
+            .id {
+                font-size: 1.5em;
+                padding: 10px;
+                float: right;
+            }
+            .actions {
+                display: none;
+            }
+        }
+    }
+}

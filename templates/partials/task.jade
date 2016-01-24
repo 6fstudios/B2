@@ -1,0 +1,16 @@
+li.card.task
+	- Date.prototype.addDays = function(days) {
+	-	var dat = new Date(this.valueOf());
+	-	dat.setDate(dat.getDate() + days);
+	-	return dat; }
+	- var iterationStart = 'new ' + task.Iteration.StartDate.split('/').join('');
+	- var taskCreation = 'new ' + task.CreateDate.split('/').join('');
+	- var color = eval(iterationStart).addDays(1) < eval(taskCreation) ? '33B1B1' : '555';
+	.task-header
+		span.id= task.UserStory.Id
+		.actions
+			a(href="/tasks/#{task.Id}") Edit
+			input.select(type="checkbox")
+	img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&color=#{color}&data=http://bb.6fstudios.com/tasks/#{task.Id}")
+	span.title= task.Name
+	
