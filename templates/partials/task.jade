@@ -1,4 +1,4 @@
-li.card.task
+li.card.task.z-depth-1.hoverable
 	- Date.prototype.addDays = function(days) {
 	-	var dat = new Date(this.valueOf());
 	-	dat.setDate(dat.getDate() + days);
@@ -9,8 +9,11 @@ li.card.task
 	.task-header
 		span.id= task.UserStory.Id
 		.actions
-			a(href="/tasks/#{task.Id}") Edit
-			input.select(type="checkbox")
+			//- a(href="/tasks/#{task.Id}") Edit
+			//- input.select(type="checkbox")
+			label
+				input.hide.select(type="checkbox")
+				i.material-icons check_box_outline_blank
 	img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&color=#{color}&data=http://bb.6fstudios.com/tasks/#{task.Id}")
 	span.title= task.Name
 	

@@ -3,8 +3,9 @@
         size: portrait;
         margin: 0.25cm;
     }
-    .task-list-actions {
-        display: none;
+    .task-list-actions,
+    .material-tooltip {
+        display: none !important;
     }
     .tasks {
         padding: 0;

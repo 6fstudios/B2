@@ -1,30 +1,42 @@
 extends layout
 
-append head
-	link(rel="stylesheet" type='text/css' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
-
 block content
-	.task-list-actions
-		.btn 
-			label
-				input.select-all(type="checkbox")
-				| select all
-		button.btn.print-selected
-			i.fa.fa-print
+	.fixed-action-btn.task-list-actions
+		a.btn-floating.btn-large
+			i.large.material-icons menu
+		ul
+			li
+				label.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.tooltipped(data-position="left" data-delay="25" data-tooltip="Select all")
+					i.material-icons select_all
+					input.hide.select-all(type="checkbox")
+			li
+				a.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.print-selected.tooltipped(data-position="left" data-delay="25" data-tooltip="Print selected")
+					i.material-icons print
+			li
+				a.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.tooltipped(data-position="left" data-delay="25" data-tooltip="Add card")
+					i.material-icons add
 	ul.tasks
 		each task in tasks
 			include partials/task.jade
+
 append scripts
 	script.
 		var data = !{JSON.stringify(tasks)};
+		$('.card').click(function(){
+			var box = $(this).find('input.select');
+			var checked = box.prop('checked');
+			box.prop('checked', !checked).trigger("change");
+		});
+
 		$('input.select').change(function() {
 			var checked = $(this).prop('checked');
 			$(this).parents('.card').toggleClass('printy', checked);
+			$(this).siblings('.material-icons').text(checked ? 'check_box' : 'check_box_outline_blank');
 		})
 
 		$('input.select-all').change(function() {
 			var checked = $(this).prop('checked');
-			$('.select').each(function(){
+			$('input.select').each(function(){
 				$(this).prop('checked', checked).trigger("change");
 			})
 		})
