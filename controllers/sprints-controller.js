@@ -31,7 +31,7 @@ sprints.getSprintTasks = function(request, reply) {
         qs: {
             format: 'json',
             where: '(Iteration.id eq ' + request.params.sprintId + ')',
-            orderByDesc: 'UserStory.Id',
+            orderByDesc: 'CreateDate',
             take: 500,
             include: '[Name, Owner, Iteration, Iteration[StartDate], CreateDate, UserStory]'
         },

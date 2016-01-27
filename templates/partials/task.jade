@@ -5,7 +5,7 @@ li.card.task.z-depth-1.hoverable
 	-	return dat; }
 	- var iterationStart = 'new ' + task.Iteration.StartDate.split('/').join('');
 	- var taskCreation = 'new ' + task.CreateDate.split('/').join('');
-	- var color = eval(iterationStart).addDays(1) < eval(taskCreation) ? '33B1B1' : '555';
+	// - var color = eval(iterationStart).addDays(1) < eval(taskCreation) ? '33B1B1' : '555';
 	.task-header
 		span.id= task.UserStory.Id
 		.actions
@@ -14,6 +14,6 @@ li.card.task.z-depth-1.hoverable
 			label
 				input.hide.select(type="checkbox")
 				i.material-icons check_box_outline_blank
-	img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&color=#{color}&data=http://bb.6fstudios.com/tasks/#{task.Id}")
+	img(src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&color=333&data=http://bb.6fstudios.com/tasks/#{task.Id}")
 	span.title= task.Name
 	
