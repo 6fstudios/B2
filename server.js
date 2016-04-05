@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({silent: true});
 var Hapi = require('hapi');
 var Path = require('path');
 var Hoek = require('hoek');
