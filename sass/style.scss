@@ -17,6 +17,13 @@ ul {
     }
 }
 
+form button {
+    background: white;
+    border: 1px solid #eee;
+    height: 55px;
+    box-shadow: 1px 1px 5px #D6D0D0;
+}
+
 label.select {
     font-size: 1.5em;
     padding: 5px;
@@ -41,6 +48,7 @@ label.select {
             width: 70%;
             float: right;
             overflow: hidden;
+            height: 2em;
         }
         .actions {
             width: 70%;
@@ -50,9 +58,11 @@ label.select {
         }
         .title {
             width: 70%;
+            height: 5.6em;
             display: block;
             box-sizing: border-box;
             padding: 0.875em;
+            padding-bottom: 0;
             float: right;
         }
         .id {
@@ -83,6 +93,28 @@ label.select {
             border-color: #adadad;
         }
     }
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomInLeft {
+    -webkit-animation-name: zoomIn;
 }
 
 @media screen and (max-width: 1150px) {

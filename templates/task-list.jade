@@ -1,5 +1,9 @@
 extends layout
 
+append head
+	link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css")
+
 block content
 	.fixed-action-btn.task-list-actions
 		a.btn-floating.btn-large
@@ -13,7 +17,7 @@ block content
 				a.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.print-selected.tooltipped(data-position="left" data-delay="25" data-tooltip="Print selected")
 					i.material-icons print
 			li
-				a.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.tooltipped(data-position="left" data-delay="25" data-tooltip="Add card")
+				a.add-card.waves-effect.waves-light.btn-floating.deep-orange.lighten-2.tooltipped(data-position="left" data-delay="25" data-tooltip="Add card")
 					i.material-icons add
 	ul.tasks
 		each task in tasks
@@ -28,20 +32,24 @@ append scripts
 			box.prop('checked', !checked).trigger("change");
 		});
 
+		$('.add-card').click(function(){
+			
+		})
+
 		$('input.select').change(function() {
 			var checked = $(this).prop('checked');
 			$(this).parents('.card').toggleClass('printy', checked);
 			$(this).siblings('.material-icons').text(checked ? 'check_box' : 'check_box_outline_blank');
-		})
+		});
 
 		$('input.select-all').change(function() {
 			var checked = $(this).prop('checked');
 			$('input.select').each(function(){
 				$(this).prop('checked', checked).trigger("change");
 			})
-		})
+		});
 
 		$('.print-selected').click(function() {
 			window.print();
-		})
+		});
 		
