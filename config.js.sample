@@ -1,4 +1,0 @@
-module.exports = {
-    apiUrl: 'https://{account}.tpondemand.com/api/v1',
-    token: '{base 64 encoded basic auth login:password}'
-}

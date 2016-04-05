@@ -1,6 +1,9 @@
 var hapi = require('hapi');
 var rp = require('request-promise');
-var config = require('../config');
+var config = {
+    apiUrl: process.env.API_URL,
+    token: process.env.AUTH_TOKEN
+};
 var tasks = {};
 
 tasks.view = function(request, reply) {

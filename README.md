@@ -1,6 +1,6 @@
 # B2
 
-Edit fields in ```config.js.sample``` and save as ```config.js```
+Set environment variables ```API_URL``` and ```AUTH_TOKEN```
 
 ```$ npm install```
 
