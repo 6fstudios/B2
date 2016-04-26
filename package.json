@@ -4,6 +4,7 @@
   "description": "Print physical version of TargetProcess",
   "main": "server.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "node server.js",
     "postinstall": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
