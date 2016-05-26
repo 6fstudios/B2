@@ -5,7 +5,16 @@ block content
 		h6
 			span (#{task.UserStory.Id}) 
 			span= task.Name
-		form( method='post')
+		form( method='post' )
 			button.btn.btn-large(value="50" name="state" class="#{task.EntityState.Name == 'To Do' ? 'active' : ''}") To Do
 			button.btn.btn-large(value="51" name="state" class="#{task.EntityState.Name == 'Doing' ? 'active' : ''}") Doing
 			button.btn.btn-large(value="52" name="state" class="#{task.EntityState.Name == 'Done' ? 'active' : ''}") Done
+
+block append scripts
+	script(type="text/javascript").
+		$(function() {
+			$('button').on('click', function() {
+				$('button').removeClass('active');
+				$(this).addClass('active');
+			});
+		});
